@@ -1,7 +1,16 @@
 [package]
 name = "dinfo"
-version = "0.1.0"
-edition = "2024"
+version = "0.2.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A fast directory information tool that shows file and folder sizes"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yourusername/dinfo"
+keywords = ["directory", "size", "filesystem", "cli"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 walkdir = "2.5.0"
+clap = { version = "4.4", features = ["derive"] }
+colored = "2.1"
+anyhow = "1.0"
