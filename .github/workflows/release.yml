@@ -34,12 +34,21 @@ jobs:
       - name: Build
         run: cargo build --release --target ${{ matrix.target }}
 
-      - name: Package binary
+      - name: Package binary (Unix)
+        if: runner.os != 'Windows'
         run: |
           mkdir -p dist
           cp target/${{ matrix.target }}/release/dinfo* dist/ || true
           cd dist
           zip dinfo-${{ matrix.target }}.zip dinfo* || true
+
+      - name: Package binary (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          mkdir -p dist
+          copy "target\${{ matrix.target }}\release\dinfo*" dist\ 2>nul || echo "Copy completed"
+          cd dist
+          powershell Compress-Archive -Path dinfo* -DestinationPath dinfo-${{ matrix.target }}.zip
 
       - name: Upload binary to release
         uses: softprops/action-gh-release@v2
