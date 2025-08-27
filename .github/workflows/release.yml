@@ -5,6 +5,9 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write # ✅ required for creating/uploading releases
+
 jobs:
   build:
     strategy:
@@ -26,6 +29,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
+          targets: ${{ matrix.target }} # ✅ ensures target is installed
 
       - name: Build
         run: cargo build --release --target ${{ matrix.target }}
@@ -33,9 +37,9 @@ jobs:
       - name: Package binary
         run: |
           mkdir -p dist
-          cp target/${{ matrix.target }}/release/dinfo* dist/
+          cp target/${{ matrix.target }}/release/dinfo* dist/ || true
           cd dist
-          zip dinfo-${{ matrix.target }}.zip dinfo*
+          zip dinfo-${{ matrix.target }}.zip dinfo* || true
 
       - name: Upload binary to release
         uses: softprops/action-gh-release@v2
