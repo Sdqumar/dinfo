@@ -1,6 +1,6 @@
 [package]
 name = "dinfo"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"  # use 2021 (2024 is not released yet)
 authors = ["Sadeeq"]
 description = "A CLI tool to analyze disk usage: shows total size, top files, and top folders"
