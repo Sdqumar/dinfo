@@ -2,10 +2,10 @@
 name = "dinfo"
 version = "1.0.0"
 edition = "2021"  # use 2021 (2024 is not released yet)
-authors = ["Your Name <you@example.com>"]
+authors = ["Sadeeq"]
 description = "A CLI tool to analyze disk usage: shows total size, top files, and top folders"
 license = "MIT OR Apache-2.0"   # common dual license for Rust crates
-repository = "https://github.com/yourusername/dinfo"
+repository = "https://github.com/Sdqumar/dinfo"
 readme = "README.md"
 keywords = ["disk", "analyzer", "filesystem", "cli"]
 categories = ["command-line-utilities"]
